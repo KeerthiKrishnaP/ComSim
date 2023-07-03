@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "aaron-bond.better-comments",
+    "esbenp.prettier-vscode",
+    "kisstkondoros.vscode-codemetrics",
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "njpwerner.autodocstring",
+    "SonarSource.sonarlint-vscode"
+  ],
+  "unwantedRecommendations": []
+}

@@ -1,0 +1,9 @@
+{
+    "python.analysis.extraPaths": [
+        "./core"
+    ],
+    "python.testing.pytestArgs": [
+        "core"
+    ],
+    "python.formatting.provider": "black",
+}

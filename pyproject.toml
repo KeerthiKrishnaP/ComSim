@@ -1,0 +1,71 @@
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "core"
+version = "0.1.0"
+description = "ComSim ABAQUS plugin"
+authors = ["Keerthi Krishna PARVATHANENI <krishna.klume@gmail.com>"]
+packages = [{include = "core"}]
+
+[tool.poetry.dependencies]
+python = "3.10.*"
+pydantic = "1.9.0"
+openpyxl = "3.0.9"
+numpy = "1.22.3"
+portion = "2.2.0"
+matplotlib = "3.5.2"
+Pillow = "10.0.*"
+
+[tool.poetry.dev-dependencies]
+black = "22.3.0"
+pylint = "2.13.8"
+jupyterlab = "3.4.0"
+tqdm = "4.64.0"
+jupyterlab-code-formatter = "1.4.11"
+pytest = "7.1.2"
+PyYAML = "6.0"
+pytest-cov = "3.0.0"
+autohooks = "21.7.0"
+autohooks-plugin-black = "21.12.0"
+autohooks-plugin-pylint = "21.6.0"
+autohooks-plugin-isort = "22.3.0"
+isort = "5.10.1"
+pydeps = "1.9.*"
+py-spy = "0.3.12"
+
+[tool.black]
+line-length = 88
+target-version = ["py39"]
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+src_paths = ["src", "tests"]
+
+[tool.autohooks]
+mode = "poetry"
+pre-commit = [
+    "autohooks.plugins.black",
+    "autohooks.plugins.isort",
+    "autohooks.plugins.pylint"
+]
+
+[tool.autohooks.plugins.black]
+arguments = ["--check", "--quiet"]
+
+[tool.autohooks.plugins.isort]
+arguments = ["--check-only"]
+
+[tool.autohooks.plugins.pylint]
+arguments = ["--score=no", "--rcfile=.pylintrc"]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+addopts = "-svv -rA --durations=3 --strict-markers"
+markers = [
+    "unit",
+    "integration",
+    "migration : migration tests",
+]
