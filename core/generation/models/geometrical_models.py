@@ -1,8 +1,16 @@
+from typing import Any
+
 from pydantic import BaseModel, NonNegativeFloat
 
 
+class Cartesian(BaseModel):
+    x: float
+    y: float | None
+    z: float | None
+
+
 class Fiber(BaseModel):
-    center: list[float, float]
+    center: Cartesian
     radius: NonNegativeFloat
 
 
@@ -12,7 +20,23 @@ class InterFiberDistace(BaseModel):
     third: NonNegativeFloat | None
 
 
+class Void(BaseModel):
+    volume: NonNegativeFloat
+    volume_fraction: NonNegativeFloat
+
+
 class Domain(BaseModel):
-    x: float
-    y: float
-    z: float
+    lenght: float
+    breath: float
+    depth: float
+
+
+class Packing(BaseModel):
+    fibers: list[Fiber]
+    voids: list[Void]
+
+
+class SpherialVoid(BaseModel):
+    size: Void
+    position: Cartesian
+    radius: float

@@ -1,6 +1,8 @@
 import math
 
-from core.generation.algorithms import nearest_neighbour_algorithm
+from core.generation.helper_fucntions.calculate_packing_fraction import (
+    cal_volumefraction_image,
+)
 
 rmax = 10
 rmin = [5, 6, 7, 8, 9]
